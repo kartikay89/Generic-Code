@@ -7,8 +7,8 @@ import mysql.connector
 from mysql.connector import Error
 import sys
 
-database_name = ""
-table_name = ""
+database_name = sys.argv[1]
+table_name = sys.argv[2]
 
 try:
 	# Define connection parameters
@@ -16,7 +16,7 @@ try:
 		host='localhost',
 		user='root',
 		# password='root',
-		database='employee_management_system'
+		database=database_name
 	)
 
 	if connection.is_connected():
@@ -29,4 +29,12 @@ finally:
 	if connection.is_connected():
 		connection.close()
 		print("Connection closed")
+  
+# interaction with the database
+
+# create a cursor object using the cursor() method
+cursor = connection.cursor()
+
+# create a table
+cursor.execute(f"CREATE TABLE {table_name} (id INT, name VARCHAR(255), age INT)")
 
