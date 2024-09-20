@@ -21,7 +21,7 @@ try:
 
 	if connection.is_connected():
 		print("Successfully connected to the database")
-
+	print("Database Name: ", database_name)
 except Error as e:
 	print(f"Error: {e}")
 
